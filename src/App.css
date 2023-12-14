@@ -3,3 +3,28 @@ main {
   flex-direction: row;
   height: 100%;
 }
+
+.table {
+  border: 1px solid black;
+}
+
+.table_row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.table_cell:first-child {
+  min-width: 20px;
+}
+
+.table_cell {
+  min-width: 150px;
+}
+
+header {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}

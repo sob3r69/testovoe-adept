@@ -1,5 +1,3 @@
-import './Header.css';
-
 type HeaderProps = {
   text: string;
 };
