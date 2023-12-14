@@ -1,13 +1,13 @@
 import './App.css';
-import { Header, Sidebar, Table } from './components';
+import { companyData } from './api/data';
+import { CompanyTable, EmployeeTable } from './widgets';
 
 function App() {
   return (
     <>
-      <Header />
       <main>
-        <Sidebar />
-        <Table />
+        <CompanyTable data={companyData} />
+        <EmployeeTable />
       </main>
     </>
   );

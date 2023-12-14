@@ -1,9 +1,13 @@
 import './Header.css';
 
-const Header = () => {
+type HeaderProps = {
+  text: string;
+};
+
+const Header = ({ text }: HeaderProps) => {
   return (
     <header>
-      Сотрудники
+      {text}
       <label>
         Выделить все
         <input type="checkbox" />
