@@ -1,12 +1,10 @@
 import { Header } from '..';
-import { companyData } from '../../api/data';
 import { TableCell } from '../../shared/components';
+import { useAppSelector } from '../../shared/hooks/redux';
 
-type CompanyTableProps = {
-  data: typeof companyData;
-};
-
-const CompanyTable = ({ data }: CompanyTableProps) => {
+const CompanyTable = () => {
+  const companies = useAppSelector((state) => state.companiesReducer);
+  console.log(companies);
   return (
     <div className="table">
       <Header text="Компании" />
@@ -16,13 +14,13 @@ const CompanyTable = ({ data }: CompanyTableProps) => {
         <div className="table_cell">Кол-во сотрудников</div>
         <div className="table_cell">Адрес</div>
       </section>
-      {data.map((item) => (
+      {companies.map((item) => (
         <section className="table_row" key={item.name}>
           <div className="table_cell">
-            <input type="checkbox" />
+            <input type="checkbox" checked={item.checked} />
           </div>
           <TableCell allowChanges={true} value={item.name} />
-          <TableCell allowChanges={false} value={item.employees} />
+          <TableCell allowChanges={false} value={item.employees.length} />
           <TableCell allowChanges={true} value={item.address} />
         </section>
       ))}
