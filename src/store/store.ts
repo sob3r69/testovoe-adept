@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import companiesReducer from './reducers/CompaniesSlice';
-import selectedUsersReducer from './reducers/SelectedCompaniesSlice';
+import selectedUsersReducer from './reducers/SelectedUsersSlice';
 
 const rootReducer = combineReducers({ companiesReducer, selectedUsersReducer });
 

@@ -1,7 +1,8 @@
 import { Header } from '..';
 import { TableCell } from '../../shared/components';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux';
-import { addSelected, deleteSelected } from '../../store/reducers/SelectedCompaniesSlice';
+import { changeName } from '../../store/reducers/CompaniesSlice';
+import { addSelected, deleteSelected } from '../../store/reducers/SelectedUsersSlice';
 
 const CompanyTable = () => {
   const companies = useAppSelector((state) => state.companiesReducer);
@@ -33,7 +34,13 @@ const CompanyTable = () => {
               }}
             />
           </div>
-          <TableCell allowChanges={true} value={item.name} />
+          <TableCell
+            allowChanges={true}
+            value={item.name}
+            onChange={(event) => {
+              dispatch(changeName({ id: item.id, name: event.target.value }));
+            }}
+          />
           <TableCell allowChanges={false} value={item.employees.length} />
           <TableCell allowChanges={true} value={item.address} />
         </section>
