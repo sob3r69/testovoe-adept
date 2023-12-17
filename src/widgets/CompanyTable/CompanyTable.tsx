@@ -16,6 +16,7 @@ const CompanyTable = () => {
       {companies.map((company, index) => (
         <TableRow key={index} item={company} />
       ))}
+      <button className="add_button">+</button>
     </div>
   );
 };

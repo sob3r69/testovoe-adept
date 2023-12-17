@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TableCell } from '..';
 import { changeAdress, changeName } from '../../../store/reducers/CompaniesSlice';
 import { addSelected, deleteSelected } from '../../../store/reducers/SelectedUsersSlice';
@@ -9,18 +10,21 @@ type TableRowProps = {
 };
 
 const TableRow = ({ item }: TableRowProps) => {
+  const [selected, setSelected] = useState(false);
   const dispatch = useAppDispatch();
   return (
-    <section className="table_row">
+    <section className="table_row" style={{ backgroundColor: selected ? 'lightgreen' : 'white' }}>
       <div className="table_cell">
         <input
           type="checkbox"
           onChange={(event) => {
             if (event.target.checked) {
+              setSelected(true);
               item.employees.forEach((employee) => {
                 dispatch(addSelected(employee));
               });
             } else {
+              setSelected(false);
               item.employees.forEach((employee) => {
                 dispatch(deleteSelected(employee));
               });

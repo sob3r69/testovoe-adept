@@ -12,6 +12,9 @@ main {
   display: flex;
   flex-direction: row;
   gap: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  justify-content: center;
 }
 
 .table_cell:first-child {
@@ -20,6 +23,17 @@ main {
 
 .table_cell {
   min-width: 150px;
+}
+
+.add_button {
+  border: 1px solid black;
+  background-color: lightgreen;
+  width: 100%;
+}
+
+.add_button:hover {
+  background-color: green;
+  cursor: pointer;
 }
 
 header {
