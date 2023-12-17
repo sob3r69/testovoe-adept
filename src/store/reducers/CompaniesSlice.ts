@@ -44,15 +44,21 @@ export const CompaniesSlice = createSlice({
       state.push(action.payload);
     },
     changeName(state, action) {
-      console.log(action.payload);
       state.forEach((item, index) => {
         if (item.id === action.payload.id) {
           state[index].name = action.payload.name;
         }
       });
     },
+    changeAdress(state, action) {
+      state.forEach((item, index) => {
+        if (item.id === action.payload.id) {
+          state[index].address = action.payload.address;
+        }
+      });
+    },
   },
 });
 
-export const { addCompany, changeName } = CompaniesSlice.actions;
+export const { addCompany, changeName, changeAdress } = CompaniesSlice.actions;
 export default CompaniesSlice.reducer;

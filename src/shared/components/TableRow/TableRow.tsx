@@ -1,5 +1,5 @@
 import { TableCell } from '..';
-import { changeName } from '../../../store/reducers/CompaniesSlice';
+import { changeAdress, changeName } from '../../../store/reducers/CompaniesSlice';
 import { addSelected, deleteSelected } from '../../../store/reducers/SelectedUsersSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { Companies } from '../../types/DataTypes';
@@ -36,7 +36,13 @@ const TableRow = ({ item }: TableRowProps) => {
         }}
       />
       <TableCell allowChanges={false} value={item.employees.length} />
-      <TableCell allowChanges={true} value={item.address} />
+      <TableCell
+        allowChanges={true}
+        value={item.address}
+        onChange={(event) => {
+          dispatch(changeAdress({ id: item.id, address: event.target.value }));
+        }}
+      />
     </section>
   );
 };
