@@ -1,5 +1,5 @@
 import { Header } from '..';
-import { TableRow } from '../../shared/components';
+import { CompaniesTableRow } from '../../shared/components';
 import { useAppSelector } from '../../shared/hooks/redux';
 
 const CompanyTable = () => {
@@ -14,7 +14,7 @@ const CompanyTable = () => {
         <div className="table_cell">Адрес</div>
       </section>
       {companies.map((company, index) => (
-        <TableRow key={index} item={company} />
+        <CompaniesTableRow key={index} item={company} />
       ))}
       <button className="add_button">+</button>
     </div>

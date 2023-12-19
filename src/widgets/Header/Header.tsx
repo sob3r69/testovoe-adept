@@ -1,8 +1,10 @@
 type HeaderProps = {
   text: string;
+  selectCallback?: () => void;
+  saveCallback?: () => void;
 };
 
-const Header = ({ text }: HeaderProps) => {
+const Header = ({ text, saveCallback }: HeaderProps) => {
   return (
     <header>
       {text}
@@ -10,6 +12,7 @@ const Header = ({ text }: HeaderProps) => {
         Выделить все
         <input type="checkbox" />
       </label>
+      <button onClick={saveCallback}>Сохранить</button>
     </header>
   );
 };

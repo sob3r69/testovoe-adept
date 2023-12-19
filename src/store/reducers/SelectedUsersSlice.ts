@@ -18,6 +18,13 @@ export const SelectedUsersSlice = createSlice({
         }
       });
     },
+    changeSelected(state, action) {
+      state.forEach((item, index) => {
+        if (item.id === action.payload.id) {
+          state[index].name = action.payload.name;
+        }
+      });
+    },
   },
 });
 

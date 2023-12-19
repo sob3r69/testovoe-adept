@@ -9,13 +9,15 @@ const initialState: Companies[] = [
     employees: [
       {
         id: 'google_employee-1',
-        name: 'John Doe',
+        name: 'John',
+        secondName: 'Doe',
         job: 'Developer',
         age: 30,
       },
       {
         id: 'google_employee-2',
-        name: 'Jane Doe',
+        name: 'Jane',
+        secondName: 'Doe',
         job: 'Designer',
         age: 25,
       },
@@ -28,7 +30,8 @@ const initialState: Companies[] = [
     employees: [
       {
         id: 'facebook_employee-1',
-        name: 'John Doe',
+        name: 'John',
+        secondName: 'Doe',
         job: 'Developer',
         age: 30,
       },

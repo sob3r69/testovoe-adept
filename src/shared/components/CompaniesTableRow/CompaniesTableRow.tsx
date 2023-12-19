@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { TableCell } from '..';
 import { changeAdress, changeName } from '../../../store/reducers/CompaniesSlice';
-import { addSelected, deleteSelected } from '../../../store/reducers/SelectedUsersSlice';
+// import { addSelected, deleteSelected } from '../../../store/reducers/SelectedUsersSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { Companies } from '../../types/DataTypes';
+import { addSelected, deleteSelected } from '../../../store/reducers/SelectedCompaniesSlice';
 
 type TableRowProps = {
   item: Companies;
 };
 
-const TableRow = ({ item }: TableRowProps) => {
+const CompaniesTableRow = ({ item }: TableRowProps) => {
   const [selected, setSelected] = useState(false);
   const dispatch = useAppDispatch();
   return (
@@ -20,14 +21,10 @@ const TableRow = ({ item }: TableRowProps) => {
           onChange={(event) => {
             if (event.target.checked) {
               setSelected(true);
-              item.employees.forEach((employee) => {
-                dispatch(addSelected(employee));
-              });
+              dispatch(addSelected(item));
             } else {
               setSelected(false);
-              item.employees.forEach((employee) => {
-                dispatch(deleteSelected(employee));
-              });
+              dispatch(deleteSelected(item));
             }
           }}
         />
@@ -51,4 +48,4 @@ const TableRow = ({ item }: TableRowProps) => {
   );
 };
 
-export default TableRow;
+export default CompaniesTableRow;

@@ -1,4 +1,5 @@
 import TableCell from './TableCell/TableCell';
-import TableRow from './TableRow/TableRow';
+import CompaniesTableRow from './CompaniesTableRow/CompaniesTableRow';
+import EmployeesTableRow from './EmployeesTableRow/EmployeesTableRow';
 
-export { TableCell, TableRow };
+export { TableCell, CompaniesTableRow, EmployeesTableRow };
