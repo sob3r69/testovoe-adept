@@ -27,7 +27,7 @@ export const SelectedCompaniesSlice = createSlice({
     },
     changeEmployeeName(state, action) {
       console.log(action.payload);
-      state.forEach((item, index) => {
+      state.forEach((item) => {
         if (item.id === action.payload.companyId) {
           item.employees.forEach((employee) => {
             if (employee.id === action.payload.employeeId) {

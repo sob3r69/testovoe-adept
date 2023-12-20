@@ -49,19 +49,27 @@ export const CompaniesSlice = createSlice({
     changeName(state, action) {
       state.forEach((item, index) => {
         if (item.id === action.payload.id) {
-          state[index].name = action.payload.name;
+          item.name = action.payload.name;
         }
       });
     },
     changeAdress(state, action) {
       state.forEach((item, index) => {
         if (item.id === action.payload.id) {
-          state[index].address = action.payload.address;
+          item.address = action.payload.address;
+        }
+      });
+    },
+    saveSelectedEmployees(state, action) {
+      state.forEach((item, index) => {
+        if (item.id === action.payload.id) {
+          item.employees = action.payload.employees;
         }
       });
     },
   },
 });
 
-export const { addCompany, changeName, changeAdress } = CompaniesSlice.actions;
+export const { addCompany, changeName, changeAdress, saveSelectedEmployees } =
+  CompaniesSlice.actions;
 export default CompaniesSlice.reducer;
