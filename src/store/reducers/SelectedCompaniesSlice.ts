@@ -37,8 +37,16 @@ export const SelectedCompaniesSlice = createSlice({
         }
       });
     },
+    addEmployee(state, action) {
+      state.forEach((item) => {
+        if (item.id === action.payload.companyId) {
+          item.employees.push(action.payload.employee);
+        }
+      });
+    },
   },
 });
 
-export const { addSelected, deleteSelected, changeEmployeeName } = SelectedCompaniesSlice.actions;
+export const { addSelected, deleteSelected, changeEmployeeName, addEmployee } =
+  SelectedCompaniesSlice.actions;
 export default SelectedCompaniesSlice.reducer;

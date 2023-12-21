@@ -5,7 +5,6 @@ import { saveSelectedEmployees } from '../../store/reducers/CompaniesSlice';
 
 const EmployeeTable = () => {
   const selectedCompanies = useAppSelector((state) => state.selectedCompaniesReducer);
-  const companies = useAppSelector((state) => state.companiesReducer);
   const dispatch = useAppDispatch();
   return (
     <div>
@@ -25,11 +24,9 @@ const EmployeeTable = () => {
         <div className="table_cell">Возраст</div>
       </section>
       <section className="table-fields">
-        {selectedCompanies.map((company) =>
-          company.employees.map((employee, EIndex) => (
-            <EmployeesTableRow key={EIndex} item={employee} companyId={company.id} />
-          ))
-        )}
+        {selectedCompanies.map((company, index) => (
+          <EmployeesTableRow key={index} employees={company.employees} companyId={company.id} />
+        ))}
       </section>
     </div>
   );
