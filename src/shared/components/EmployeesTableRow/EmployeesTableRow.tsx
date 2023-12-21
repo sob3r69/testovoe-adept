@@ -1,22 +1,21 @@
 import { useState } from 'react';
-import { Employee } from '../../types/DataTypes';
+import { Companies } from '../../types/DataTypes';
 import { TableCell } from '..';
 import { useAppDispatch } from '../../hooks/redux';
 import { addEmployee, changeEmployeeName } from '../../../store/reducers/SelectedCompaniesSlice';
+import generateEmployeeID from '../../helpers/generateEmployeeID';
 
 type EmployeesTableRowProps = {
-  // item: Employee;
-  companyId: number;
-  employees: Employee[];
+  company: Companies;
 };
 
-const EmployeesTableRow = ({ companyId, employees }: EmployeesTableRowProps) => {
+const EmployeesTableRow = ({ company }: EmployeesTableRowProps) => {
   const [selected, setSelected] = useState(false);
   const dispatch = useAppDispatch();
 
   return (
     <>
-      {employees.map((item, index) => (
+      {company.employees.map((item, index) => (
         <section
           key={index}
           className="table_row"
@@ -40,7 +39,7 @@ const EmployeesTableRow = ({ companyId, employees }: EmployeesTableRowProps) => 
             onChange={(event) =>
               dispatch(
                 changeEmployeeName({
-                  companyId: companyId,
+                  companyId: company.id,
                   employeeId: item.id,
                   name: event.target.value,
                 })
@@ -54,7 +53,14 @@ const EmployeesTableRow = ({ companyId, employees }: EmployeesTableRowProps) => 
       ))}
       <button
         className="add_button"
-        onClick={() => dispatch(addEmployee({ companyId: companyId, employee: {} }))}
+        onClick={() =>
+          dispatch(
+            addEmployee({
+              companyId: company.id,
+              employee: { id: generateEmployeeID(company.name, company.employees.length) },
+            })
+          )
+        }
       >
         +
       </button>

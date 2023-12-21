@@ -25,7 +25,7 @@ const EmployeeTable = () => {
       </section>
       <section className="table-fields">
         {selectedCompanies.map((company, index) => (
-          <EmployeesTableRow key={index} employees={company.employees} companyId={company.id} />
+          <EmployeesTableRow key={index} company={company} />
         ))}
       </section>
     </div>
