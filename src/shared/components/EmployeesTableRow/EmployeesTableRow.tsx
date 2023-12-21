@@ -3,7 +3,7 @@ import { Companies } from '../../types/DataTypes';
 import { TableCell } from '..';
 import { useAppDispatch } from '../../hooks/redux';
 import { addEmployee, changeEmployeeName } from '../../../store/reducers/SelectedCompaniesSlice';
-import generateEmployeeID from '../../helpers/generateEmployeeID';
+import { generateEmployeeID } from '../../helpers/generators';
 
 type EmployeesTableRowProps = {
   company: Companies;
