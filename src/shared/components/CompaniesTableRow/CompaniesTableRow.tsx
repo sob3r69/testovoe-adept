@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TableCell } from '..';
-import { changeAdress, changeName } from '../../../store/reducers/CompaniesSlice';
+import { changeAdress, changeName, setSelected } from '../../../store/reducers/CompaniesSlice';
 // import { addSelected, deleteSelected } from '../../../store/reducers/SelectedUsersSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { Companies } from '../../types/DataTypes';
@@ -11,19 +11,21 @@ type TableRowProps = {
 };
 
 const CompaniesTableRow = ({ item }: TableRowProps) => {
-  const [selected, setSelected] = useState(false);
   const dispatch = useAppDispatch();
   return (
-    <section className="table_row" style={{ backgroundColor: selected ? 'lightgreen' : 'white' }}>
+    <section
+      className="table_row"
+      style={{ backgroundColor: item.selected ? 'lightgreen' : 'white' }}
+    >
       <div className="table_cell">
         <input
           type="checkbox"
           onChange={(event) => {
             if (event.target.checked) {
-              setSelected(true);
+              dispatch(setSelected({ id: item.id, selected: true }));
               dispatch(addSelected(item));
             } else {
-              setSelected(false);
+              dispatch(setSelected({ id: item.id, selected: false }));
               dispatch(deleteSelected(item));
             }
           }}

@@ -15,6 +15,8 @@ const EmployeeTable = () => {
             dispatch(saveSelectedEmployees(company));
           });
         }}
+        onChecked={() => {}}
+        onUnChecked={() => {}}
       />
       <section className="table_row">
         <div className="table_cell"></div>

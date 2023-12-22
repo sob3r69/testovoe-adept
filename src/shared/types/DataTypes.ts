@@ -10,5 +10,6 @@ export type Companies = {
   id: number;
   name: string;
   address: string;
+  selected: boolean;
   employees: Employee[];
 };

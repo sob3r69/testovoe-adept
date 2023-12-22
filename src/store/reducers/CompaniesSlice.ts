@@ -6,6 +6,7 @@ const initialState: Companies[] = [
     id: 0,
     name: 'Google',
     address: 'Mountain View, CA',
+    selected: false,
     employees: [
       {
         id: 'google_employee-1',
@@ -27,6 +28,7 @@ const initialState: Companies[] = [
     id: 1,
     name: 'Facebook',
     address: 'Menlo Park, CA',
+    selected: false,
     employees: [
       {
         id: 'facebook_employee-1',
@@ -67,9 +69,16 @@ export const CompaniesSlice = createSlice({
         }
       });
     },
+    setSelected(state, action) {
+      state.forEach((item, index) => {
+        if (item.id === action.payload.id) {
+          item.selected = action.payload.selected;
+        }
+      });
+    },
   },
 });
 
-export const { addCompany, changeName, changeAdress, saveSelectedEmployees } =
+export const { addCompany, changeName, changeAdress, saveSelectedEmployees, setSelected } =
   CompaniesSlice.actions;
 export default CompaniesSlice.reducer;
